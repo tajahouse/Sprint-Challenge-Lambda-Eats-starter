@@ -63,7 +63,7 @@ const Pizza = () =>{
         })
 
     })
-        .catch(err => console.log(err.response));
+        .catch(err => console.log(err.res));
     };
 
     const validateChange = e => {
