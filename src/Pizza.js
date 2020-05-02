@@ -11,6 +11,14 @@ const Pizza = () =>{
         special:"",
         name:""
     })
+
+    const [err, setErr]= useState({
+        pizzaSize: "",
+        sauce:"",
+        toppings:"",
+        special:"",
+        name:""
+    })
     const inputChange = e =>{
         e.persist();
         const newFormData = {
@@ -88,7 +96,7 @@ const Pizza = () =>{
                 Name
                 <input name="name" id="name" placeholder="Enter Your Name Here" />               
             </label> 
-            
+
             <button disabled={buttonDisabled}>Order</button>
         </form>
 
