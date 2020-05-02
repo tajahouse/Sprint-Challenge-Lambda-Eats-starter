@@ -108,6 +108,7 @@ const Pizza = () =>{
             </label>
 
             <label htmlFor="sauce" name="sauce">
+                Choose your sauce
                 <select id="sauce" name="sauce" onChange={inputChange}>
                     <option value="original">Original Red</option>
                     <option value="garlic">Garlic Ranch</option>
