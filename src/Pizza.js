@@ -37,6 +37,42 @@ const Pizza = () =>{
         })
     },[pizza])
 
+    const Order = e => {
+        e.preventDefault();
+    axios.post("https://reqres.in/api/users", pizza).then(res => {
+        setPost(res.data);
+
+        setPizza({
+            pizzaSize: "",
+            sauce:"",
+            toppings:"",
+            special:"",
+            name:"" 
+        })
+
+    })
+        .catch(err => console.log(err.response));
+    };
+
+    const validateChange = e => {
+        // Reach will allow us to "reach" into the schema and test only one part.
+        yup
+          .reach(formSchema, e.target.name)
+          .validate(e.target.value)
+          .then(valid => {
+            setErr({
+              ...err,
+              [e.target.name]: ""
+            });
+          })
+          .catch(err => {
+            setErr({
+              ...err,
+              [e.target.name]: err.err[0]
+            });
+          });
+      };
+
     const inputChange = e =>{
         e.persist();
         const newFormData = {
