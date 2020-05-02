@@ -5,7 +5,10 @@ import axios from "axios";
 const formSchema = yup.object().shape({
     pizzaSize: yup.string(),
     sauce: yup.string(),
-    toppings: yup.boolean().oneOf([true, false]),
+    chicken: yup.boolean().oneOf([true, false]),
+    beef: yup.boolean().oneOf([true, false]),
+    cheese: yup.boolean().oneOf([true, false]),
+    spinach: yup.boolean().oneOf([true, false]),
     special: yup.string(),
     name: yup.string().min(2, "Name has to be a minimum of 2 characters").required()
 })
@@ -16,15 +19,21 @@ const Pizza = () =>{
     const [pizza, setPizza] = useState({
         pizzaSize: "",
         sauce:"",
-        toppings:"",
+        chicken:"",
+        beef:"",
+        cheese:"",
+        spinach:"",
         special:"",
         name:""
     })
 
-    const [err, setErr]= useState({
+    const [error, setError]= useState({
         pizzaSize: "",
         sauce:"",
-        toppings:"",
+        chicken:"",
+        beef:"",
+        cheese:"",
+        spinach:"",
         special:"",
         name:""
     })
@@ -45,7 +54,10 @@ const Pizza = () =>{
         setPizza({
             pizzaSize: "",
             sauce:"",
-            toppings:"",
+            chicken:"",
+            beef:"",
+            cheese:"",
+            spinach:"",
             special:"",
             name:"" 
         })
@@ -60,15 +72,15 @@ const Pizza = () =>{
           .reach(formSchema, e.target.name)
           .validate(e.target.value)
           .then(valid => {
-            setErr({
-              ...err,
+            setError({
+              ...error,
               [e.target.name]: ""
             });
           })
           .catch(err => {
-            setErr({
-              ...err,
-              [e.target.name]: err.err[0]
+            setError({
+              ...error,
+              [e.target.name]: err.error
             });
           });
       };
@@ -80,12 +92,12 @@ const Pizza = () =>{
             [e.target.name]:e.target.type === "checkbox" ? e.target.checked : e.target.value
         };
         validateChange(e);
-        setFormState(newFormData);
+        setPizza(newFormData);
     }
     return(
         <>
         <h2>Build Your Own Pizza</h2>
-        <form>
+        <form onSubmit={Order}>
             <label htmlFor="pizzaSize" name="pizzaSize">
                 Choose your size
                 <select id="pizza-size">
@@ -104,44 +116,54 @@ const Pizza = () =>{
                 </select>
             </label>
 
-            <label htmlFor="toppings">
+            <label htmlFor="chicken">
                 Choose your Toppings
             <input
-            
-                type="checkbox"
-                name="toppings"
-                checked={pizza.toppings}
-                onChange={inputChange}
-                />
-                Chicken
 
-                <input
-            
-            type="checkbox"
-            name="toppings"
-            checked={pizza.toppings}
-            onChange={inputChange}
+                id="chicken"            
+                type="checkbox"
+                name="chicken"
+                checked={pizza.chicken}
+                onChange={inputChange}
+            />
+            </label>
+
+            Chicken
+            <label htmlFor="beef">
+            <input
+
+                id="beef"            
+                type="checkbox"
+                name="beef"
+                checked={pizza.beef}
+                onChange={inputChange}
             />
             Beef
+            </label>
+            <label htmlFor="cheese">
 
             <input
-            
-            type="checkbox"
-            name="toppings"
-            checked={pizza.toppings}
-            onChange={inputChange}
+                id="chesse" 
+                type="checkbox"
+                name="cheese"
+                checked={pizza.cheese}
+                onChange={inputChange}
             />
             Cheese
+            </label>
+            <label htmlFor="spinach">  
 
             <input
-            
-            type="checkbox"
-            name="toppings"
-            checked={pizza.toppings}
-            onChange={inputChange}
+                id="spinach" 
+                type="checkbox"
+                name="spinach"
+                checked={pizza.spinach}
+                onChange={inputChange}
             />
             Spinach
             </label>
+
+
 
             <label htmlFor="special">
                 Any special instructions?
@@ -152,8 +174,8 @@ const Pizza = () =>{
                 Name
                 <input name="name" id="name" placeholder="Enter Your Name Here" />               
             </label> 
-
-            <button disabled={buttonDisabled}>Order</button>
+            <pre>{JSON.stringify(post, null, 2)}</pre>
+            <button type="submit">Order</button>
         </form>
 
         </>
