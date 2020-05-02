@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
+import axios from "axios";
+
+const formSchema = yup.object().shape({
+    pizzaSize: yup.string(),
+    sauce: yup.string(),
+    toppings: yup.boolean().oneOf([true, false]),
+    special: yup.string(),
+    name: yup.string().min(2, "Name has to be a minimum of 2 characters").required()
+})
 
 const Pizza = () =>{
     const [buttonDisabled, setButtonDisabled]= useState(true);
@@ -19,6 +28,15 @@ const Pizza = () =>{
         special:"",
         name:""
     })
+
+    const [post, setPost] = useState([])
+
+    useEffect(() => {
+        formSchema.isValid(pizza).then(valid =>{
+            setButtonDisabled(!valid);
+        })
+    },[pizza])
+
     const inputChange = e =>{
         e.persist();
         const newFormData = {
