@@ -8,7 +8,7 @@ const HomePage = () =>{
     }
     return(
     <div className="homepage-wrapper">
-        <h1>Pizza Anyone?</h1>
+        <h2>Pizza Anyone?</h2>
     <p>Come choose from your favorite pizza, delivered to you while you code!</p>
     <button className="pizza-button" onClick={pizzaPage}>Pizza?</button>
     </div>

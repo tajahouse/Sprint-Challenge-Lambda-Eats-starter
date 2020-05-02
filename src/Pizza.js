@@ -95,10 +95,12 @@ const Pizza = () =>{
         setPizza(newFormData);
     }
     return(
-        <>
+        <div className="formWrapper">
         <h2>Build Your Own Pizza</h2>
+        
         <form onSubmit={Order}>
-            <label htmlFor="pizzaSize" name="pizzaSize">
+        <span className="pizzas">
+            <label className="size" htmlFor="pizzaSize" name="pizzaSize">
                 Choose your size
                 <select id="pizzaSize" name="pizzaSize" onChange={inputChange} data-cy="pizzaSize">
                     <option value="medium">Medium 12"</option>
@@ -106,8 +108,8 @@ const Pizza = () =>{
                     <option value="giant">Giant 20"</option>
                 </select>
             </label>
-
-            <label htmlFor="sauce" name="sauce">
+       
+            <label className="sauce" htmlFor="sauce" name="sauce">
                 Choose your sauce
                 <select id="sauce" name="sauce" onChange={inputChange} data-cy="sauce">
                     <option value="original">Original Red</option>
@@ -118,7 +120,7 @@ const Pizza = () =>{
             </label>
 
             <label htmlFor="chicken" >
-                Choose your Toppings
+                Chicken
             <input
 
                 id="chicken"            
@@ -130,8 +132,8 @@ const Pizza = () =>{
             />
             </label>
 
-            Chicken
             <label htmlFor="beef">
+                Beef
             <input
 
                 id="beef"            
@@ -141,10 +143,10 @@ const Pizza = () =>{
                 onChange={inputChange}
                 data-cy="beef"
             />
-            Beef
+
             </label>
             <label htmlFor="cheese">
-
+                Cheese
             <input
                 id="chesse" 
                 type="checkbox"
@@ -153,10 +155,10 @@ const Pizza = () =>{
                 onChange={inputChange}
                 data-cy="cheese"
             />
-            Cheese
+            
             </label>
             <label htmlFor="spinach">  
-
+                Spinach
             <input
                 id="spinach" 
                 type="checkbox"
@@ -165,7 +167,7 @@ const Pizza = () =>{
                 onChange={inputChange}
                 data-cy="spinach"
             />
-            Spinach
+        
             </label>
 
 
@@ -181,9 +183,10 @@ const Pizza = () =>{
             </label> 
             <pre>{JSON.stringify(post, null, 2)}</pre>
             <button type="submit" data-cy="button" >Order</button>
+        </span>
         </form>
 
-        </>
+        </div>
     )
 }
 
