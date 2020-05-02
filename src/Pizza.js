@@ -100,7 +100,7 @@ const Pizza = () =>{
         <form onSubmit={Order}>
             <label htmlFor="pizzaSize" name="pizzaSize">
                 Choose your size
-                <select id="pizzaSize" name="pizzaSize" onChange={inputChange}>
+                <select id="pizzaSize" name="pizzaSize" onChange={inputChange} data-cy="pizzaSize">
                     <option value="medium">Medium 12"</option>
                     <option value="large">Large 16"</option>
                     <option value="giant">Giant 20"</option>
@@ -109,7 +109,7 @@ const Pizza = () =>{
 
             <label htmlFor="sauce" name="sauce">
                 Choose your sauce
-                <select id="sauce" name="sauce" onChange={inputChange}>
+                <select id="sauce" name="sauce" onChange={inputChange} data-cy="sauce">
                     <option value="original">Original Red</option>
                     <option value="garlic">Garlic Ranch</option>
                     <option value="bbq">BBQ Sauce</option>
@@ -117,7 +117,7 @@ const Pizza = () =>{
                 </select>
             </label>
 
-            <label htmlFor="chicken">
+            <label htmlFor="chicken" >
                 Choose your Toppings
             <input
 
@@ -126,6 +126,7 @@ const Pizza = () =>{
                 name="chicken"
                 checked={pizza.chicken}
                 onChange={inputChange}
+                data-cy="chicken"
             />
             </label>
 
@@ -138,6 +139,7 @@ const Pizza = () =>{
                 name="beef"
                 checked={pizza.beef}
                 onChange={inputChange}
+                data-cy="beef"
             />
             Beef
             </label>
@@ -149,6 +151,7 @@ const Pizza = () =>{
                 name="cheese"
                 checked={pizza.cheese}
                 onChange={inputChange}
+                data-cy="cheese"
             />
             Cheese
             </label>
@@ -160,6 +163,7 @@ const Pizza = () =>{
                 name="spinach"
                 checked={pizza.spinach}
                 onChange={inputChange}
+                data-cy="spinach"
             />
             Spinach
             </label>
@@ -168,15 +172,15 @@ const Pizza = () =>{
 
             <label htmlFor="special">
                 Any special instructions?
-                <textarea id="special" name="special" value={pizza.special} onChange={inputChange} />
+                <textarea id="special" name="special" value={pizza.special} onChange={inputChange} data-cy="special" />
             </label>
 
             <label htmlFor="name">
                 Name
-                <input name="name" id="name" placeholder="Enter Your Name Here" value={pizza.name} onChange={inputChange} />               
+                <input name="name" id="name" placeholder="Enter Your Name Here" value={pizza.name} onChange={inputChange} data-cy="name"/>               
             </label> 
             <pre>{JSON.stringify(post, null, 2)}</pre>
-            <button type="submit">Order</button>
+            <button type="submit" data-cy="button" >Order</button>
         </form>
 
         </>
