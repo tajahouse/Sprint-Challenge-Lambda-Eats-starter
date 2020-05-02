@@ -1,5 +1,6 @@
 import React from "react";
 import HomePage from './HomePage';
+import Pizza from "./Pizza";
 import { Route, Link, Switch } from 'react-router-dom';
 
 const App = () => {
@@ -13,9 +14,8 @@ const App = () => {
       </div>
      </nav>
      <Switch>
-       <Route path="/pizza">
+       <Route path="/pizza" component={Pizza} />
 
-       </Route>
        <Route exact path="/" component={HomePage} />
      </Switch>
      </div>
