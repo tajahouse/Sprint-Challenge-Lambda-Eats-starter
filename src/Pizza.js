@@ -78,7 +78,9 @@ const Pizza = () =>{
         const newFormData = {
             ...pizza, 
             [e.target.name]:e.target.type === "checkbox" ? e.target.checked : e.target.value
-        }
+        };
+        validateChange(e);
+        setFormState(newFormData);
     }
     return(
         <>
