@@ -100,7 +100,7 @@ const Pizza = () =>{
         <form onSubmit={Order}>
             <label htmlFor="pizzaSize" name="pizzaSize">
                 Choose your size
-                <select id="pizza-size" onChange={inputChange}>
+                <select id="pizzaSize" name="pizzaSize" onChange={inputChange}>
                     <option value="medium">Medium 12"</option>
                     <option value="large">Large 16"</option>
                     <option value="giant">Giant 20"</option>
@@ -108,7 +108,7 @@ const Pizza = () =>{
             </label>
 
             <label htmlFor="sauce" name="sauce">
-                <select id="sauce" onChange={inputChange}>
+                <select id="sauce" name="sauce" onChange={inputChange}>
                     <option value="original">Original Red</option>
                     <option value="garlic">Garlic Ranch</option>
                     <option value="bbq">BBQ Sauce</option>
